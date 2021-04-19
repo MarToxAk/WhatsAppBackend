@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node index --disable-spins --port $PORT --popup --in-docker --qr-timeout 0 -k $API_KEY --keep-alive --keep-updated --executable-path='/app/.apt/usr/bin/google-chrome'",
+    "build": "node index",
     "test": "echo \"Error: no test specified\" && exit 1",
     "log": "echo \"Success: Server successfully started on port \" + $PORT"
   },

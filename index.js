@@ -19,8 +19,9 @@ const configWithCases = require('@open-wa/wa-automate/bin/config-schema.json');
 const commandLineUsage = require('command-line-usage');
 const chalk = require('chalk');
 const axios = require('axios').default;
-const io = require('socket.io')(app);
-
+const http = require('http');
+const server = http.createServer(app);
+const io = require('socket.io')(server);
 
 
 const tryOpenFileAsObject = (filelocation, needArray = false) => {
@@ -488,8 +489,10 @@ async function start(){
 	}
 return await create({ ...config })
 .then(async (client) => {
+
 	io.on('connection', (socket) => {
-		client.sendText('5512982062736@c.us', 'conectado' + socket)
+		//console.log('conectado')
+		client.sendText('5512982062736@c.us', 'conectado')
 	});
 
   client.onMessage(async message => {
@@ -603,6 +606,7 @@ Nossos Parceiros.
 			fs.writeFileSync("./open-wa-" + c.sessionId + ".sw_col.json", JSON.stringify(swCol));
 			app.get('/postman.json', (req,res)=>res.send(pmCol))
 			app.get('/swagger.json', (req,res)=>res.send(swCol))
+			
 		}
 
 		if(c && c.generateApiDocs && swCol) {
@@ -659,7 +663,8 @@ Nossos Parceiros.
 		await tcpPortUsed.waitUntilFree(PORT, 200, 20000)
 		console.log(`Port ${PORT} is now free.`);
 
-		app.listen(PORT, () => {
+
+		server.listen(PORT, () => {
 			console.log(`\n• Listening on port ${PORT}!`);
 			if(process.send){
 				process.send('ready');
@@ -667,6 +672,8 @@ Nossos Parceiros.
 				process.send('ready');
 			}
 		});
+	
+
 		const apiDocsUrl = c.apiHost ? `${c.apiHost}/api-docs/ `: `${c.host.includes('http') ? '' : 'http://'}${c.host}:${PORT}/api-docs/ `;
 		const link = terminalLink('API Explorer', apiDocsUrl);
 		if(c && c.generateApiDocs)  console.log(`\n\t${link}`)
@@ -676,26 +683,10 @@ Nossos Parceiros.
 			const statsLink = terminalLink('API Stats', swaggerStatsUrl);
 			console.log(`\n\t${statsLink}`)
 		}
-
-		io.on('connection', (socket) => {
-			client.sendText('5512982062736@c.us', 'conectado' + socket)
-		});
-	
-		client.onMessage(async message => {
-			await client.sendText(message.from, 
-	`Obrigado pela Mensagem ! 😌
-	Mas sou somente um BOT feito para automação.👷🏽
-	Caso Queira, automatizar seu negocio entre em contato com meu criador. 🙋🏽‍♂️.
-	pelo nosso Email de contato ✉️: contato@autopyweb.com
-	ou por telefone 📞: (12)3600-5005
-	
-	------------------------------------------------------------------
-	Nossos Parceiros.
-	🍕 - D'napolli Pizzaria e Lanchonete. (12)38967100
-	`);
-		});
+		
 
 	}
+	
 })
 .catch(e => console.log('Error', e.message, e));
 }
