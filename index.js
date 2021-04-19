@@ -19,7 +19,6 @@ const configWithCases = require('@open-wa/wa-automate/bin/config-schema.json');
 const commandLineUsage = require('command-line-usage');
 const chalk = require('chalk');
 const axios = require('axios').default;
-const io = require('socket.io')(server);
 
 
 const tryOpenFileAsObject = (filelocation, needArray = false) => {
@@ -490,7 +489,6 @@ return await create({ ...config })
 	io.on('connection', (socket) => {
 		client.sendText('5512982062736@c.us', 'conectado' + socket)
 	});
-	client.sendText('5512982062736@c.us', )
 
   client.onMessage(async message => {
     await client.sendText(message.from, 
@@ -658,6 +656,8 @@ Nossos Parceiros.
 		console.log(`Checking if port ${PORT} is free`);
 		await tcpPortUsed.waitUntilFree(PORT, 200, 20000)
 		console.log(`Port ${PORT} is now free.`);
+		const io = require('socket.io')(app);
+
 		app.listen(PORT, () => {
 			console.log(`\n• Listening on port ${PORT}!`);
 			if(process.send){
@@ -675,6 +675,24 @@ Nossos Parceiros.
 			const statsLink = terminalLink('API Stats', swaggerStatsUrl);
 			console.log(`\n\t${statsLink}`)
 		}
+
+		io.on('connection', (socket) => {
+			client.sendText('5512982062736@c.us', 'conectado' + socket)
+		});
+	
+		client.onMessage(async message => {
+			await client.sendText(message.from, 
+	`Obrigado pela Mensagem ! 😌
+	Mas sou somente um BOT feito para automação.👷🏽
+	Caso Queira, automatizar seu negocio entre em contato com meu criador. 🙋🏽‍♂️.
+	pelo nosso Email de contato ✉️: contato@autopyweb.com
+	ou por telefone 📞: (12)3600-5005
+	
+	------------------------------------------------------------------
+	Nossos Parceiros.
+	🍕 - D'napolli Pizzaria e Lanchonete. (12)38967100
+	`);
+		});
 
 	}
 })
