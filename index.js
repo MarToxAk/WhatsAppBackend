@@ -19,6 +19,8 @@ const configWithCases = require('@open-wa/wa-automate/bin/config-schema.json');
 const commandLineUsage = require('command-line-usage');
 const chalk = require('chalk');
 const axios = require('axios').default;
+const io = require('socket.io')(app);
+
 
 
 const tryOpenFileAsObject = (filelocation, needArray = false) => {
@@ -656,7 +658,6 @@ Nossos Parceiros.
 		console.log(`Checking if port ${PORT} is free`);
 		await tcpPortUsed.waitUntilFree(PORT, 200, 20000)
 		console.log(`Port ${PORT} is now free.`);
-		const io = require('socket.io')(app);
 
 		app.listen(PORT, () => {
 			console.log(`\n• Listening on port ${PORT}!`);
