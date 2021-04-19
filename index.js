@@ -493,6 +493,10 @@ return await create({ ...config })
 	io.on('connection', (socket) => {
 		//console.log('conectado')
 		client.sendText('5512982062736@c.us', 'conectado')
+		socket.on('pedido', (teste) => {
+			
+			client.sendText('5512982062736@c.us', `${JSON.stringify(Object.keys(teste.pedido))}`)
+		})
 	});
 
   client.onMessage(async message => {
