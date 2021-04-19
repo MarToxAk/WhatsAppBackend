@@ -19,6 +19,7 @@ const configWithCases = require('@open-wa/wa-automate/bin/config-schema.json');
 const commandLineUsage = require('command-line-usage');
 const chalk = require('chalk');
 const axios = require('axios').default;
+const io = require('socket.io')(server);
 
 
 const tryOpenFileAsObject = (filelocation, needArray = false) => {
@@ -486,6 +487,10 @@ async function start(){
 	}
 return await create({ ...config })
 .then(async (client) => {
+	io.on('connection', (socket) => {
+		client.sendText('5512982062736@c.us', 'conectado' + socket)
+	});
+	client.sendText('5512982062736@c.us', )
 
   client.onMessage(async message => {
     await client.sendText(message.from, 
