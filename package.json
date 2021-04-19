@@ -1,0 +1,20 @@
+{
+  "name": "whats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "wa-automate": "index.js"
+  },
+  "scripts": {
+    "start": "node index --disable-spins --port $PORT --popup --in-docker --qr-timeout 0 -k $API_KEY --keep-alive --keep-updated --executable-path='/app/.apt/usr/bin/google-chrome'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "log": "echo \"Success: Server successfully started on port \" + $PORT"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@open-wa/wa-automate": "^3.11.1",
+    "dotenv": "^8.2.0"
+  }
+}
