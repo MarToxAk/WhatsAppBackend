@@ -492,7 +492,6 @@ return await create({ ...config })
 
 	io.on('connection', (socket) => {
 		//console.log('conectado')
-		client.sendText('5512982062736@c.us', 'conectado')
 		socket.on('pedido', (teste) => {
 			io.emit('pizzaria', teste);
 		})
