@@ -490,12 +490,7 @@ async function start(){
 return await create({ ...config })
 .then(async (client) => {
 
-	io.on('connection', (socket) => {
-		//console.log('conectado')
-		socket.on('pedido', (teste) => {
-			io.emit('pizzaria', teste);
-		})
-	});
+
 
   client.onMessage(async message => {
     await client.sendText(message.from, 
@@ -692,5 +687,12 @@ Nossos Parceiros.
 })
 .catch(e => console.log('Error', e.message, e));
 }
+
+io.on('connection', (socket) => {
+	//console.log('conectado')
+	socket.on('pedido', (teste) => {
+		io.emit('pizzaria', teste);
+	})
+});
 
 start();
