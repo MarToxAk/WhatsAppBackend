@@ -19,6 +19,8 @@ const configWithCases = require('@open-wa/wa-automate/bin/config-schema.json');
 const commandLineUsage = require('command-line-usage');
 const chalk = require('chalk');
 const axios = require('axios').default;
+const http = require('http');
+const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
