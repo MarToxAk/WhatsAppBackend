@@ -693,6 +693,9 @@ io.on('connection', (socket) => {
 	socket.on('pedido', (teste) => {
 		io.emit('pizzaria', teste);
 	})
+	socket.on('pedidostatus', (teste) =>{
+		io.emit('pedidostatus', teste)
+	})
 });
 
 start();
