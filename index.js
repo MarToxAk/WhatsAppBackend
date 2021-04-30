@@ -21,7 +21,8 @@ const chalk = require('chalk');
 const axios = require('axios').default;
 const http = require('http');
 const server = http.createServer(app);
-const io = require('socket.io')(server);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 
 io.on('connection', (socket) => {
