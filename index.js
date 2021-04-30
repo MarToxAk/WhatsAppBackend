@@ -33,7 +33,9 @@ io.on('connection', (socket) => {
 		io.emit('pedidostatus', teste)
 	})
 });
-
+server.listen(8002, () => {
+  console.log('listening on *:8002');
+});
 
 const tryOpenFileAsObject = (filelocation, needArray = false) => {
 	let res = undefined;
@@ -472,9 +474,6 @@ async function start() {
 			}
 		}
 	} catch (error) {
-		server.listen(8002, () => {
-  console.log('listening on *:8002');
-});
 		if (error.code === "ECONNREFUSED") console.log('fresh run')
 	}
 	config.headless = c.headful != undefined ? !c.headful : c.headless
@@ -675,7 +674,7 @@ Nossos Parceiros.
 					await tcpPortUsed.waitUntilFree(PORT, 200, 20000)
 				}
 				catch{
-					
+
 				}
 				console.log(`Port ${PORT} is now free.`);
 
