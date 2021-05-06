@@ -18,19 +18,12 @@ module.exports = venom.create(
     mkdirFolderToken: '', //folder directory tokens, just inside the venom folder, example:  { mkdirFolderToken: '/node_modules', } //will save the tokens folder in the node_modules directory
     headless: true, // Headless chrome
     devtools: false, // Open devtools by default
-    useChrome: true, // If false will use Chromium instance
+    useChrome: false, // If false will use Chromium instance
     debug: false, // Opens a debug session
     logQR: true, // Logs QR automatically in terminal
     browserWS: '', // If u want to use browserWSEndpoint
     browserArgs: [''], // Parameters to be added into the chrome browser instance
     puppeteerOptions: {
-      args: [
-        '--keep-updated',
-        '--keep-alive',
-        '--in-docker',
-        '--popup',
-        '--disable-spins'
-      ],
       executablePath: '/app/.apt/usr/bin/google-chrome'
     }, // Will be passed to puppeteer.launch
     disableSpins: true, // Will disable Spinnies animation, useful for containers (docker) for a better log
