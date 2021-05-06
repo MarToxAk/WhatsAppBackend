@@ -7,16 +7,18 @@
     "wa-automate": "index.js"
   },
   "scripts": {
-    "start": "node index --disable-spins --port $PORT --popup --in-docker --qr-timeout 0 -k $API_KEY --keep-alive --keep-updated --executable-path='/app/.apt/usr/bin/google-chrome'",
-    "build": "node index",
+    "start": "node venom --disable-spins --port $PORT --popup --in-docker --qr-timeout 0 -k $API_KEY --keep-alive --keep-updated --executable-path='/app/.apt/usr/bin/google-chrome'",
+    "build": "node venom",
     "test": "echo \"Error: no test specified\" && exit 1",
     "log": "echo \"Success: Server successfully started on port \" + $PORT"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@open-wa/wa-automate": "^3.11.1",
+    "@open-wa/wa-automate": "^3.11.8",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "socket.io": "^4.0.1"
+    "socket.io": "^4.0.1",
+    "venom-bot": "^3.0.16"
   }
 }

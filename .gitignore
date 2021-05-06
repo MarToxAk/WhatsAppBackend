@@ -12,7 +12,6 @@ session.data.json
 **qr_code_session.png
 **.re.js
 
-**.data.json
 **.postman_collection.json
 **.sw_col.json
 
@@ -30,3 +29,7 @@ demo/**.mp4
 .vscode/launch.json
 logs
 **logs**
+
+# managed by open-wa. see: https://github.com/open-wa/wa-automate-nodejs/issues/1632
+**.data.json
+# end managed by open-wa. see: https://github.com/open-wa/wa-automate-nodejs/issues/1632
