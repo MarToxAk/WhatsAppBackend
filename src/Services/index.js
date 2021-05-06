@@ -23,7 +23,16 @@ module.exports = venom.create(
     logQR: true, // Logs QR automatically in terminal
     browserWS: '', // If u want to use browserWSEndpoint
     browserArgs: [''], // Parameters to be added into the chrome browser instance
-    puppeteerOptions: {}, // Will be passed to puppeteer.launch
+    puppeteerOptions: {
+      args: [
+        '--keep-updated',
+        '--keep-alive',
+        '--in-docker',
+        '--popup',
+        '--disable-spins'
+      ],
+      executablePath: '/app/.apt/usr/bin/google-chrome'
+    }, // Will be passed to puppeteer.launch
     disableSpins: true, // Will disable Spinnies animation, useful for containers (docker) for a better log
     disableWelcome: true, // Will disable the welcoming message which appears in the beginning
     updatesLog: true, // Logs info updates automatically in terminal
