@@ -1,15 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+var http = require('http').Server(app);
+// passa o http-server par ao socketio
+var io = require('socket.io')(http);
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
-require('./src/Routes/index')(app); // <--- basta adicionar essa linha
-
-
 io.on('connection', (socket) => {
 	//console.log('conectado')
 	socket.on('pedido', (teste) => {
@@ -19,9 +16,13 @@ io.on('connection', (socket) => {
 		io.emit('pedidostatus', teste)
 	})
 });
+require('./src/Routes/index')(app); // <--- basta adicionar essa linha
+
 
 app.use(cors());
 app.use(express.json());
 var porta = process.env.PORT || 8080;
 
-app.listen(porta);
+http.listen(porta, function(){
+  console.log('Servidor rodando em: http://localhost:'+porta);
+});
