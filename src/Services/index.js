@@ -17,7 +17,9 @@ module.exports = venom.create(
       console.log('Session name: ', session);
     },
     {
-      useChrome: false, // If false will use Chromium instance
+      useChrome: true, // If false will use Chromium instance
+      browserWS: '', // If u want to use browserWSEndpoint
+      browserArgs: [''], // Parameters to be added into the chrome browser instance
       puppeteerOptions: {
         executablePath: '/app/.apt/usr/bin/google-chrome'
       }, // Will be passed to puppeteer.launch
