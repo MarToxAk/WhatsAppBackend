@@ -2,12 +2,17 @@ const venom = require('venom-bot');
 require('dotenv').config()
 
 console.log(`"${process.env.WATOKEN22}"`)
+var imgstr = ''
 
-module.exports = venom.create(
+exports.imgstr = ()=>{ return imgstr };
+
+exports.venom = () => {
+  return venom.create(
 "Auto Py Web - Bot",
     (base64Qrimg, asciiQR, attempts, urlCode) => {
       console.log('Number of attempts to read the qrcode: ', attempts);
       console.log('Terminal qrcode: ', asciiQR);
+      imgstr = base64Qrimg
       console.log('base64 image string qrcode: ', base64Qrimg);
       console.log('urlCode (data-ref): ', urlCode);
     },
@@ -31,6 +36,6 @@ module.exports = venom.create(
     },
     
 )
-
+  }
 
 

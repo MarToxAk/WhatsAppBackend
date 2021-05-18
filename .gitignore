@@ -8,6 +8,7 @@ newsession
 open-wa-session.postman_collection.json
 open-wa-session.sw_col.json
 open-wa-undefined.postman_collection.json
+session.data.json
 **qr_code_session.png
 **.re.js
 
@@ -30,5 +31,5 @@ logs
 **logs**
 
 # managed by open-wa. see: https://github.com/open-wa/wa-automate-nodejs/issues/1632
-
+**.data.json
 # end managed by open-wa. see: https://github.com/open-wa/wa-automate-nodejs/issues/1632
