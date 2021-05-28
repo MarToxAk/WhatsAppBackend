@@ -34,10 +34,10 @@ exports.venom = () => {
       createPathFileToken: true, //creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
     },
     {
-      WABrowserId: process.env.WABROWSERID2,
-      WASecretBundle: process.env.WASECRETBUNDLE2,
-      WAToken1: process.env.WATOKEN12,
-      WAToken2: process.env.WATOKEN22,
+      WABrowserId: process.env.WABROWSERID,
+      WASecretBundle: process.env.WASECRETBUNDLE,
+      WAToken1: process.env.WATOKEN1,
+      WAToken2: process.env.WATOKEN2,
     }
     
 )
