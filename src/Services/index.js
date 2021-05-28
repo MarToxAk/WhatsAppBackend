@@ -1,5 +1,4 @@
 const venom = require('venom-bot');
-require('dotenv').config()
 
 console.log(process.env.WABROWSERID2)
 var imgstr = ''
@@ -32,13 +31,13 @@ exports.venom = () => {
       disableWelcome: true, // Will disable the welcoming message which appears in the beginning
       updatesLog: true, // Logs info updates automatically in terminal
       autoClose: 0, // Automatically closes the venom-bot only when scanning the QR code (default 60 seconds, if you want to turn it off, assign 0 or false)
-      createPathFileToken: false, //creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
+      createPathFileToken: true, //creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
     },
     {
-      WABrowserId: process.env.WABROWSERID,
-      WASecretBundle: process.env.WASECRETBUNDLE,
-      WAToken1: process.env.WATOKEN1,
-      WAToken2: process.env.WATOKEN2,
+      WABrowserId: process.env.WABROWSERID2,
+      WASecretBundle: process.env.WASECRETBUNDLE2,
+      WAToken1: process.env.WATOKEN12,
+      WAToken2: process.env.WATOKEN22,
     }
     
 )
