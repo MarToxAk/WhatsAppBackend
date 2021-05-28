@@ -1,6 +1,7 @@
 const venom = require('venom-bot');
+require('dotenv').config()
 
-console.log(process.env.WABROWSERID2)
+console.log(process.env.WABROWSERID)
 var imgstr = ''
 
 exports.imgstr = ()=>{ return imgstr };
@@ -21,9 +22,9 @@ exports.venom = () => {
       console.log('Session name: ', session);
     },
     {
+      headless: true, // Headless chrome
+      devtools: false, // Open devtools by default
       useChrome: true, // If false will use Chromium instance
-      browserWS: '', // If u want to use browserWSEndpoint
-      browserArgs: [''], // Parameters to be added into the chrome browser instance
       puppeteerOptions: {
         executablePath: '/app/.apt/usr/bin/google-chrome'
       }, // Will be passed to puppeteer.launch

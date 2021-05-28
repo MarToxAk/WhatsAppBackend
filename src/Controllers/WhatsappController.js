@@ -35,3 +35,8 @@ exports.sendImage = (req, res, next) => {
 exports.sendQrcode = async (req, res, next) => {
   res.send(`<img src='${await startBot.imgstr()}'></img>`)
 };
+
+exports.client = async (req, res, next) => {
+  const sesion = await client.getSessionTokenBrowser(true)
+  res.send(sesion)
+};
