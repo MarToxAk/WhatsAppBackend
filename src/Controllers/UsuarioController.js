@@ -30,6 +30,7 @@ exports.post = (req, res, next) => {
           console.log('Status:', response.statusCode)
           console.log('Headers:', JSON.stringify(response.headers))
           console.log('Response:', body)
+          res.status(201).send(body);
         }
       )
     }
