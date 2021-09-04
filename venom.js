@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
 io.on('connection', (socket) => {
 	//console.log('conectado')
-	socket.on('pedido', (teste) => {
+	socket.on('pedido', async (teste) => {
 		io.emit('pizzaria', teste);
 
 		await request(
