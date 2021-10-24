@@ -47,25 +47,26 @@ exports.sendPub = async (req, res, next) => {
   const error = 0
 
   for (const user in users) {
+    console.log(user)
     await client
       .sendImage(
-        `55${user.telephone.replace(/[^0-9]/g, '')}@c.us`,
+        `55${users[user].telephone.replace(/[^0-9]/g, '')}@c.us`,
         'https://i.ibb.co/j65yLrn/47.png',
         'Propaganda',
-        `Boa Noite ${user.name}, Peça já seu Lanche Delicioso pelo nosso Aplicativo https://dnapolli.delivery/`
+        `Boa Noite ${users[user].name}, Peça já seu Lanche Delicioso pelo nosso Aplicativo https://dnapolli.delivery/`
       )
       .then(() => {})
       .catch(() => {})
     await client
       .sendText(
-        `55${user.telephone.replace(/[^0-9]/g, '')}@c.us`,
-        `Se caso preferir Sr.ª  ${user.name}, Peça pelo nosso WhatsApp rapido e facil https://wa.me/551238967100`
+        `55${users[user].telephone.replace(/[^0-9]/g, '')}@c.us`,
+        `Se caso preferir Sr.ª  ${users[user].name}, Peça pelo nosso WhatsApp rapido e facil https://wa.me/551238967100`
       )
       .then(() => {})
       .catch(() => {})
     await client
       .sendContactVcard(
-        `55${user.telephone.replace(/[^0-9]/g, '')}@c.us`,
+        `55${users[user].telephone.replace(/[^0-9]/g, '')}@c.us`,
         '551238967100@c.us'
       )
       .then(() => {
