@@ -43,10 +43,10 @@ exports.sendPub = async (req, res, next) => {
   const db = await connectToDatabase(process.env.MONGODB_URI)
   const collection = await db.collection('users')
   const users = await collection.find({}).toArray()
-  const success = 0
-  const error = 0
+  let success = 0
+  let error = 0
 
-  for (const user in users) {
+  for (let user in users) {
     console.log(user)
     await client
       .sendImage(
