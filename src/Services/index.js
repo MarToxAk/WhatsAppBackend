@@ -25,6 +25,7 @@ exports.venom = () => {
     },
     {
       multidevice: true,
+      folderNameToken: 'tokens',
       headless: true, // Headless chrome
       devtools: false, // Open devtools by default
       useChrome: true, // If false will use Chromium instance
@@ -36,12 +37,6 @@ exports.venom = () => {
       updatesLog: true, // Logs info updates automatically in terminal
       autoClose: 0, // Automatically closes the venom-bot only when scanning the QR code (default 60 seconds, if you want to turn it off, assign 0 or false)
       createPathFileToken: true, //creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
-    },
-    {
-      WABrowserId: process.env.WABROWSERID,
-      WASecretBundle: process.env.WASECRETBUNDLE,
-      WAToken1: process.env.WATOKEN1,
-      WAToken2: process.env.WATOKEN2,
     }
   )
 }
