@@ -24,6 +24,7 @@ exports.venom = () => {
       console.log('Session name: ', session)
     },
     {
+      multidevice: true,
       headless: true, // Headless chrome
       devtools: false, // Open devtools by default
       useChrome: true, // If false will use Chromium instance
