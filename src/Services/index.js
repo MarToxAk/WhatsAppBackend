@@ -29,6 +29,7 @@ exports.venom = () => {
       headless: true, // Headless chrome
       devtools: false, // Open devtools by default
       useChrome: true, // If false will use Chromium instance
+      debug: false,
       puppeteerOptions: {
         executablePath: '/app/.apt/usr/bin/google-chrome',
       }, // Will be passed to puppeteer.launch
@@ -36,7 +37,8 @@ exports.venom = () => {
       disableWelcome: true, // Will disable the welcoming message which appears in the beginning
       updatesLog: true, // Logs info updates automatically in terminal
       autoClose: 0, // Automatically closes the venom-bot only when scanning the QR code (default 60 seconds, if you want to turn it off, assign 0 or false)
-      createPathFileToken: true, //creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
+      createPathFileToken: true, // creates a folder when inserting an object in the client's browser, to work it is necessary to pass the parameters in the function create browserSessionToken
+      logQR: true,
     }
   )
 }
